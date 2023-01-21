@@ -2,13 +2,10 @@
 <resources>
 
     <color name="primary_color">#010613</color>
-    <color name="primary_variant_color">#000000</color>
     <color name="secondary_color">#ff8282</color>
-    <color name="secondary_variant_color">#c85255</color>
 
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>
-    <color name="app_background">#010613</color>
     <color name="text_grey">#D2D2D2</color>
     <color name="potentially_hazardous">#FF8282</color>
 </resources>

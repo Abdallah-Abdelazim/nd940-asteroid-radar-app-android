@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Asteroid Radar</string>
 
+    <string name="main_fragment_label">Asteroid Radar</string>
+    <string name="detail_fragment_label">Asteroid Details</string>
+
     <string name="next_week_asteroids">View week asteroids</string>
     <string name="today_asteroids">View today asteroids</string>
     <string name="saved_asteroids">View saved asteroids</string>
@@ -19,4 +22,5 @@
     <string name="not_hazardous_asteroid_image">Not hazardous asteroid image</string>
     <string name="this_is_nasa_s_picture_of_day_showing_nothing_yet">This is NASA\'s picture of day, showing nothing yet</string>
     <string name="nasa_picture_of_day_content_description_format">NASA\'s picture of day: %s</string>
+    <string name="content_desc_hazardousness_state">Hazardousness state icon</string>
 </resources>

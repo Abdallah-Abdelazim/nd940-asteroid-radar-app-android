@@ -7,22 +7,25 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.abdallah_abdelazim.asteroidradar.ui.main.MainFragment"
-        android:label="fragment_main"
+        android:label="@string/main_fragment_label"
         tools:layout="@layout/fragment_main">
+
         <action
-            android:id="@+id/action_showDetail"
+            android:id="@+id/action_mainFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
+
     </fragment>
 
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.abdallah_abdelazim.asteroidradar.ui.detail.DetailFragment"
-        android:label="fragment_detail"
+        android:label="@string/detail_fragment_label"
         tools:layout="@layout/fragment_detail">
 
         <argument
             android:name="selectedAsteroid"
             app:argType="com.abdallah_abdelazim.asteroidradar.ui.model.Asteroid" />
+
     </fragment>
 
 </navigation>

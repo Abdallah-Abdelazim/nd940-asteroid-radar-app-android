@@ -1,7 +1,7 @@
-package com.abdallah_abdelazim.asteroidradar.api
+package com.abdallah_abdelazim.asteroidradar.data.remote.utils
 
-import com.abdallah_abdelazim.asteroidradar.Asteroid
-import com.abdallah_abdelazim.asteroidradar.Constants
+import com.abdallah_abdelazim.asteroidradar.ui.model.Asteroid
+import com.abdallah_abdelazim.asteroidradar.data.Constants
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.*

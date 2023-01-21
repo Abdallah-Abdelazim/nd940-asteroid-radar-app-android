@@ -1,4 +1,4 @@
-package com.abdallah_abdelazim.asteroidradar
+package com.abdallah_abdelazim.asteroidradar.data.remote.model
 
 import com.squareup.moshi.Json
 

@@ -1,4 +1,4 @@
-package com.abdallah_abdelazim.asteroidradar.detail
+package com.abdallah_abdelazim.asteroidradar.ui.detail
 
 
 import android.os.Bundle

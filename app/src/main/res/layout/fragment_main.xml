@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.abdallah_abdelazim.asteroidradar.main.MainViewModel" />
+            type="com.abdallah_abdelazim.asteroidradar.ui.main.MainViewModel" />
 
     </data>
 

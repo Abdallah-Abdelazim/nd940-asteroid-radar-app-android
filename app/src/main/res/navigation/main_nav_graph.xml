@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.abdallah_abdelazim.asteroidradar.main.MainFragment"
+        android:name="com.abdallah_abdelazim.asteroidradar.ui.main.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main">
         <action
@@ -16,13 +16,13 @@
 
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.abdallah_abdelazim.asteroidradar.detail.DetailFragment"
+        android:name="com.abdallah_abdelazim.asteroidradar.ui.detail.DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail">
 
         <argument
             android:name="selectedAsteroid"
-            app:argType="com.abdallah_abdelazim.asteroidradar.Asteroid" />
+            app:argType="com.abdallah_abdelazim.asteroidradar.ui.model.Asteroid" />
     </fragment>
 
 </navigation>

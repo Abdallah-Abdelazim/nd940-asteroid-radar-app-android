@@ -12,7 +12,8 @@ class MainFragment : Fragment() {
     private val viewModel: MainViewModel by viewModels()
 
     private var _binding: FragmentMainBinding? = null
-    private val binding = _binding!!
+    private val binding
+        get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,10 +26,11 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.lifecycleOwner = this
-        binding.viewModel = viewModel
-
         setHasOptionsMenu(true)
+
+        binding.lifecycleOwner = this
+
+        binding.viewModel = viewModel
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -37,7 +39,21 @@ class MainFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return true
+        return when (item.itemId) {
+            R.id.action_week_asteroid -> {
+                // TODO
+                true
+            }
+            R.id.action_today_asteroid -> {
+                // TODO
+                true
+            }
+            R.id.action_saved_asteroid -> {
+                // TODO
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     override fun onDestroyView() {

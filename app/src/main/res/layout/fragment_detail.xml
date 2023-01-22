@@ -7,7 +7,7 @@
 
         <variable
             name="asteroid"
-            type="com.abdallah_abdelazim.asteroidradar.ui.model.Asteroid" />
+            type="com.abdallah_abdelazim.asteroidradar.ui.model.AsteroidUiModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,12 +23,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription"
             tools:srcCompat="@drawable/asteroid_safe" />
 
         <ScrollView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:padding="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/activity_main_image_of_the_day">
@@ -54,7 +56,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="@{asteroid.closeApproachDate}"
-
                         tools:text="2020-02-01" />
                 </LinearLayout>
 
@@ -81,7 +82,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-
                             app:astronomicalUnitText="@{asteroid.absoluteMagnitude}"
                             tools:text="25.126 au" />
                     </LinearLayout>
@@ -106,8 +106,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-
-                    app:kmUnitText="@{asteroid.estimatedDiameter}"
+                    app:kmUnitText="@{asteroid.estimatedDiameterKm}"
                     tools:text="0.82 km" />
 
                 <TextView
@@ -121,8 +120,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-
-                    app:velocityText="@{asteroid.relativeVelocity}"
+                    app:velocityText="@{asteroid.relativeVelocityKmPerSec}"
                     tools:text="11.9 km/s" />
 
                 <TextView
@@ -136,8 +134,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-
-                    app:astronomicalUnitText="@{asteroid.distanceFromEarth}"
+                    app:astronomicalUnitText="@{asteroid.distanceFromEarthAu}"
                     tools:text="0.0924 au" />
 
             </LinearLayout>

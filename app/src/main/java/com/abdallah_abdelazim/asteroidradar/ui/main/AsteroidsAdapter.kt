@@ -6,12 +6,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.abdallah_abdelazim.asteroidradar.R
 import com.abdallah_abdelazim.asteroidradar.databinding.ItemAsteroidBinding
-import com.abdallah_abdelazim.asteroidradar.ui.model.Asteroid
+import com.abdallah_abdelazim.asteroidradar.ui.model.AsteroidUiModel
 
-class AsteroidsAdapter(private val onItemClick: (asteroid: Asteroid) -> Unit) :
+class AsteroidsAdapter(private val onItemClick: (asteroidUiModel: AsteroidUiModel) -> Unit) :
     RecyclerView.Adapter<AsteroidsAdapter.AsteroidViewHolder>() {
 
-    var asteroids: List<Asteroid>? = null
+    var asteroidUiModels: List<AsteroidUiModel>? = null
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -27,23 +27,23 @@ class AsteroidsAdapter(private val onItemClick: (asteroid: Asteroid) -> Unit) :
     }
 
     override fun onBindViewHolder(holder: AsteroidViewHolder, position: Int) {
-        holder.asteroid = asteroids!![position]
+        holder.asteroidUiModel = asteroidUiModels!![position]
     }
 
-    override fun getItemCount(): Int = asteroids?.size ?: 0
+    override fun getItemCount(): Int = asteroidUiModels?.size ?: 0
 
     class AsteroidViewHolder(
         private val binding: ItemAsteroidBinding,
-        private val onItemClick: (asteroid: Asteroid) -> Unit
+        private val onItemClick: (asteroidUiModel: AsteroidUiModel) -> Unit
     ) :
         RecyclerView.ViewHolder(binding.root) {
 
-        var asteroid: Asteroid? = null
+        var asteroidUiModel: AsteroidUiModel? = null
             set(value) {
                 field = value
                 binding.asteroid = value
                 binding.root.setOnClickListener {
-                    asteroid?.let(onItemClick)
+                    asteroidUiModel?.let(onItemClick)
                 }
             }
 

@@ -16,6 +16,7 @@ import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.util.concurrent.TimeUnit
 
 val dataModule = module {
 
@@ -57,6 +58,9 @@ private fun provideOkHttpClient(appContext: Context): OkHttpClient {
     logging.setLevel(Level.BASIC)
     @Suppress("DEPRECATION")
     return OkHttpClient.Builder()
+        .connectTimeout(30, TimeUnit.SECONDS)
+        .writeTimeout(30, TimeUnit.SECONDS)
+        .readTimeout(30, TimeUnit.SECONDS)
         .addInterceptor(logging)
         .addInterceptor(ChuckerInterceptor(appContext))
         .build()

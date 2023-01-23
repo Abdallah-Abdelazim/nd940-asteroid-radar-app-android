@@ -8,3 +8,28 @@ plugins {
     id "com.google.devtools.ksp" version "1.8.0-1.0.8" apply false
     id "com.google.android.libraries.mapsplatform.secrets-gradle-plugin" version "2.0.1" apply false
 }
+
+ext {
+    versions = [
+            coreKtx           : "1.9.0",
+            appcompat         : "1.6.0",
+            activityKtx       : "1.6.1",
+            fragmentKtx       : "1.5.5",
+            material          : "1.7.0",
+            constraintlayout  : "2.1.4",
+            glide             : "4.14.2",
+            lifecycle         : "2.5.1",
+            navigation        : "2.5.3",
+            room              : "2.5.0",
+            moshi             : "1.14.0",
+            retrofit          : "2.9.0",
+            workmanager       : "2.7.1",
+            coroutines_android: "1.6.4",
+            testJunit         : "4.13.2",
+            androidtestJunit  : "1.1.5",
+            espresso          : "3.5.1",
+            koin              : "3.3.2",
+            okhttp            : "4.10.0",
+            chucker           : "3.5.2"
+    ]
+}

@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 )
 data class AsteroidEntity(
     @PrimaryKey
-    val id: Long,
+    val id: String,
     val name: String,
     val closeApproachDate: String,
     val absoluteMagnitude: Double,

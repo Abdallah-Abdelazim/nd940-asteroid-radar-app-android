@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="viewModel"
-            type="com.abdallah_abdelazim.asteroidradar.ui.main.MainViewModel" />
+            name="uiState"
+            type="com.abdallah_abdelazim.asteroidradar.ui.main.MainUiState" />
 
     </data>
 
@@ -29,7 +29,10 @@
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
-                tools:src="@tools:sample/backgrounds/scenic" />
+                app:imageUrl="@{uiState.pictureOfDay.url}"
+                app:nasaPictureOfDayContentDescription="@{uiState.pictureOfDay.title}"
+                app:srcCompat="@drawable/placeholder_picture_of_day"
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -60,6 +63,7 @@
             android:layout_height="wrap_content"
             android:indeterminate="true"
             android:visibility="gone"
+            app:isVisible="@{uiState.loading}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"

@@ -1,11 +1,11 @@
 package com.abdallah_abdelazim.asteroidradar.ui.model
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class AsteroidUiModel(
-    val id: Long,
+    val id: String,
     val name: String,
     val closeApproachDate: String,
     val absoluteMagnitude: Double,

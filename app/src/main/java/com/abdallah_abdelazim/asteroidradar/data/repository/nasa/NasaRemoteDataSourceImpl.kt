@@ -26,9 +26,11 @@ class NasaRemoteDataSourceImpl(
     }
 
     override suspend fun getNasaPictureOfDay(): PictureOfDayDto {
-        return handleResponse(
+        val pictureOfDayDto = handleResponse(
             nasaApi.pictureOfDay()
         ) { this }
+        return if (pictureOfDayDto.mediaType == "image") pictureOfDayDto
+        else getNasaPictureOfDay() // Retry
     }
 
 }

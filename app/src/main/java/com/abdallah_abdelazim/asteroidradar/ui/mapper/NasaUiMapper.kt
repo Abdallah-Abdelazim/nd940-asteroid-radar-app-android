@@ -5,8 +5,8 @@ import com.abdallah_abdelazim.asteroidradar.data.local.entity.PictureOfDayEntity
 import com.abdallah_abdelazim.asteroidradar.ui.model.AsteroidUiModel
 import com.abdallah_abdelazim.asteroidradar.ui.model.PictureOfDayUiModel
 
-fun toAsteroidUiModel(asteroidEntity: AsteroidEntity): AsteroidUiModel =
-    asteroidEntity.let {
+fun toAsteroidUiModel(asteroidEntity: AsteroidEntity?): AsteroidUiModel? =
+    asteroidEntity?.let {
         AsteroidUiModel(
             it.id,
             it.name,
@@ -19,8 +19,8 @@ fun toAsteroidUiModel(asteroidEntity: AsteroidEntity): AsteroidUiModel =
         )
     }
 
-fun toPictureOfDayUiModel(pictureOfDayEntity: PictureOfDayEntity): PictureOfDayUiModel =
-    pictureOfDayEntity.let {
+fun toPictureOfDayUiModel(pictureOfDayEntity: PictureOfDayEntity?): PictureOfDayUiModel? =
+    pictureOfDayEntity?.let {
         PictureOfDayUiModel(
             it.title,
             it.url

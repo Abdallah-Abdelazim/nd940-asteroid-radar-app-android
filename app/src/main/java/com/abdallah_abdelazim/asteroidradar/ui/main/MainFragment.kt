@@ -2,13 +2,16 @@ package com.abdallah_abdelazim.asteroidradar.ui.main
 
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.abdallah_abdelazim.asteroidradar.R
 import com.abdallah_abdelazim.asteroidradar.databinding.FragmentMainBinding
+import com.abdallah_abdelazim.asteroidradar.ui.model.AsteroidUiModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -50,11 +53,17 @@ class MainFragment : Fragment() {
     }
 
     private fun setupAsteroidsRv() {
-        asteroidsAdapter = AsteroidsAdapter { asteroid ->
-            MainFragmentDirections.actionMainFragmentToDetailFragment(asteroid)
-        }
+        asteroidsAdapter = AsteroidsAdapter(::navigateToAsteroidDetails)
         binding.rvAsteroid.setHasFixedSize(true)
         binding.rvAsteroid.adapter = asteroidsAdapter
+    }
+
+    private fun navigateToAsteroidDetails(asteroid: AsteroidUiModel) {
+        findNavController().navigate(
+            MainFragmentDirections.actionMainFragmentToDetailFragment(
+                asteroid
+            )
+        )
     }
 
     private fun renderUiState(uiState: MainUiState) = with(uiState) {
@@ -70,15 +79,30 @@ class MainFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_week_asteroid -> {
-                // TODO
+                viewModel.showUpcomingAsteroids()
+                Toast.makeText(
+                    requireContext(),
+                    R.string.msg_show_upcoming_asteroids,
+                    Toast.LENGTH_SHORT
+                ).show()
                 true
             }
             R.id.action_today_asteroid -> {
-                // TODO
+                viewModel.showTodayAsteroids()
+                Toast.makeText(
+                    requireContext(),
+                    R.string.msg_show_today_asteroids,
+                    Toast.LENGTH_SHORT
+                ).show()
                 true
             }
             R.id.action_saved_asteroid -> {
-                // TODO
+                viewModel.showSavedBeforeTodayAsteroids()
+                Toast.makeText(
+                    requireContext(),
+                    R.string.msg_show_saved_before_today_asteroids,
+                    Toast.LENGTH_SHORT
+                ).show()
                 true
             }
             else -> super.onOptionsItemSelected(item)

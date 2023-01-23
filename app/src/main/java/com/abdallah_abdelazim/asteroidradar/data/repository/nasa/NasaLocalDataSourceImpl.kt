@@ -12,8 +12,16 @@ class NasaLocalDataSourceImpl(
     private val pictureOfDayDao: PictureOfDayDao
 ) : NasaLocalDataSource {
 
-    override fun getAllAsteroids(): Flow<List<AsteroidEntity>> {
-        return asteroidDao.getAll().distinctUntilChanged()
+    override fun getUpcomingAsteroids(today: String): Flow<List<AsteroidEntity>> {
+        return asteroidDao.getUpcomingAsteroids(today).distinctUntilChanged()
+    }
+
+    override fun getTodayAsteroids(today: String): Flow<List<AsteroidEntity>> {
+        return asteroidDao.getTodayAsteroids(today).distinctUntilChanged()
+    }
+
+    override fun getSavedBeforeTodayAsteroids(today: String): Flow<List<AsteroidEntity>> {
+        return asteroidDao.getSavedBeforeTodayAsteroid(today).distinctUntilChanged()
     }
 
     override suspend fun insertAllAsteroids(asteroids: List<AsteroidEntity>) {

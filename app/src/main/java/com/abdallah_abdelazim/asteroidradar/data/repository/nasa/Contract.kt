@@ -18,7 +18,11 @@ interface NasaRemoteDataSource {
 
 interface NasaLocalDataSource {
 
-    fun getAllAsteroids(): Flow<List<AsteroidEntity>>
+    fun getUpcomingAsteroids(today: String): Flow<List<AsteroidEntity>>
+
+    fun getTodayAsteroids(today: String): Flow<List<AsteroidEntity>>
+
+    fun getSavedBeforeTodayAsteroids(today: String): Flow<List<AsteroidEntity>>
 
     suspend fun insertAllAsteroids(asteroids: List<AsteroidEntity>)
 
@@ -33,11 +37,21 @@ interface NasaLocalDataSource {
 
 interface NasaRepository {
 
-    suspend fun cacheNearEarthObjects(startDate: String, endDate: String)
+    suspend fun refreshNearEarthObjects(startDate: String, endDate: String)
 
-    fun getCachedNearEarthObjects(): Flow<List<AsteroidEntity>>
+    suspend fun refreshWeekNearEarthObjects()
 
-    suspend fun cacheNasaPictureOfDay()
+    suspend fun refreshNasaPictureOfDay()
 
-    fun getCachedNasaPictureOfDay(): Flow<PictureOfDayEntity>
+    suspend fun refreshAllData(startDate: String, endDate: String)
+
+    suspend fun refreshAllWeekData()
+
+    fun getUpcomingAsteroids(): Flow<List<AsteroidEntity>>
+
+    fun getTodayAsteroids(): Flow<List<AsteroidEntity>>
+
+    fun getSavedBeforeTodayAsteroids(): Flow<List<AsteroidEntity>>
+
+    fun getNasaPictureOfDay(): Flow<PictureOfDayEntity>
 }

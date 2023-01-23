@@ -11,7 +11,7 @@ import com.abdallah_abdelazim.asteroidradar.ui.model.AsteroidUiModel
 class AsteroidsAdapter(private val onItemClick: (asteroidUiModel: AsteroidUiModel) -> Unit) :
     RecyclerView.Adapter<AsteroidsAdapter.AsteroidViewHolder>() {
 
-    var asteroidUiModels: List<AsteroidUiModel>? = null
+    var asteroidUiModels: List<AsteroidUiModel?>? = null
         set(value) {
             field = value
             notifyDataSetChanged()

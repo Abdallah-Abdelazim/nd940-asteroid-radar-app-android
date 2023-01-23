@@ -7,10 +7,8 @@ import com.abdallah_abdelazim.asteroidradar.ui.mapper.toAsteroidUiModel
 import com.abdallah_abdelazim.asteroidradar.ui.mapper.toPictureOfDayUiModel
 import com.abdallah_abdelazim.asteroidradar.ui.model.AsteroidUiModel
 import com.abdallah_abdelazim.asteroidradar.ui.model.PictureOfDayUiModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 class MainViewModel(private val nasaRepository: NasaRepository) : ViewModel() {
@@ -22,17 +20,85 @@ class MainViewModel(private val nasaRepository: NasaRepository) : ViewModel() {
     val currentState
         get() = uiState.value
 
+    private lateinit var getDataJob: Job
+
     init {
-        viewModelScope.launch {
+        getDataJob = viewModelScope.launch {
             combine(
-                nasaRepository.getCachedNearEarthObjects(),
-                nasaRepository.getCachedNasaPictureOfDay()
+                nasaRepository.getUpcomingAsteroids(),
+                nasaRepository.getNasaPictureOfDay()
             ) { asteroidEntities, pictureOfDayEntity ->
                 _uiState.value = MainUiState(
                     false,
                     toPictureOfDayUiModel(pictureOfDayEntity),
                     asteroidEntities.map { toAsteroidUiModel(it) }
                 )
+            }.collect()
+        }
+    }
+
+    fun showUpcomingAsteroids() {
+        viewModelScope.launch {
+            _uiState.value = MainUiState(isLoading = true)
+
+            nasaRepository.refreshAllWeekData()
+
+            getDataJob.cancel()
+            getDataJob = viewModelScope.launch {
+                combine(
+                    nasaRepository.getUpcomingAsteroids(),
+                    nasaRepository.getNasaPictureOfDay()
+                ) { asteroidEntities, pictureOfDayEntity ->
+                    _uiState.value = MainUiState(
+                        false,
+                        toPictureOfDayUiModel(pictureOfDayEntity),
+                        asteroidEntities.map { toAsteroidUiModel(it) }
+                    )
+                }.collect()
+            }
+        }
+    }
+
+    fun showTodayAsteroids() {
+        viewModelScope.launch {
+            _uiState.value = MainUiState(isLoading = true)
+
+            nasaRepository.refreshAllWeekData()
+
+            getDataJob.cancel()
+            getDataJob = viewModelScope.launch {
+                combine(
+                    nasaRepository.getTodayAsteroids(),
+                    nasaRepository.getNasaPictureOfDay()
+                ) { asteroidEntities, pictureOfDayEntity ->
+                    _uiState.value = MainUiState(
+                        false,
+                        toPictureOfDayUiModel(pictureOfDayEntity),
+                        asteroidEntities.map { toAsteroidUiModel(it) }
+                    )
+                }.collect()
+            }
+        }
+    }
+
+    fun showSavedBeforeTodayAsteroids() {
+        viewModelScope.launch {
+            _uiState.value = MainUiState(isLoading = true)
+
+            nasaRepository.refreshAllWeekData()
+
+            getDataJob.cancel()
+            getDataJob = viewModelScope.launch {
+                combine(
+                    nasaRepository.getSavedBeforeTodayAsteroids(),
+                    nasaRepository.getNasaPictureOfDay()
+                ) { asteroidEntities, pictureOfDayEntity ->
+                    _uiState.value = MainUiState(
+                        false,
+                        toPictureOfDayUiModel(pictureOfDayEntity),
+                        asteroidEntities.map { toAsteroidUiModel(it) }
+                    )
+                }.collect()
             }
         }
     }
@@ -42,5 +108,5 @@ class MainViewModel(private val nasaRepository: NasaRepository) : ViewModel() {
 data class MainUiState(
     val isLoading: Boolean = true,
     val pictureOfDay: PictureOfDayUiModel? = null,
-    val asteroids: List<AsteroidUiModel>? = null
+    val asteroids: List<AsteroidUiModel?>? = null
 )

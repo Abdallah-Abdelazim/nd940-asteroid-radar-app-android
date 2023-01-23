@@ -46,12 +46,14 @@
                     android:orientation="vertical">
 
                     <TextView
+                        style="@style/TitleTextField"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/close_approach_data_title" />
 
                     <TextView
                         android:id="@+id/close_approach_date"
+                        style="@style/ContentTextField"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
@@ -73,12 +75,14 @@
                         android:orientation="vertical">
 
                         <TextView
+                            style="@style/TitleTextField"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/absolute_magnitude_title" />
 
                         <TextView
                             android:id="@+id/absolute_magnitude"
+                            style="@style/ContentTextField"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
@@ -90,12 +94,14 @@
                         android:id="@+id/help_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:contentDescription="@string/astronomical_unit_explanation_button"
                         android:padding="16dp"
                         app:srcCompat="@drawable/ic_help_circle" />
 
                 </LinearLayout>
 
                 <TextView
+                    style="@style/TitleTextField"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -103,6 +109,7 @@
 
                 <TextView
                     android:id="@+id/estimated_diameter"
+                    style="@style/ContentTextField"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
@@ -110,6 +117,7 @@
                     tools:text="0.82 km" />
 
                 <TextView
+                    style="@style/TitleTextField"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -117,6 +125,7 @@
 
                 <TextView
                     android:id="@+id/relative_velocity"
+                    style="@style/ContentTextField"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
@@ -124,6 +133,7 @@
                     tools:text="11.9 km/s" />
 
                 <TextView
+                    style="@style/TitleTextField"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -131,6 +141,7 @@
 
                 <TextView
                     android:id="@+id/distance_from_earth"
+                    style="@style/ContentTextField"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"

@@ -28,11 +28,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
+                android:contentDescription="@string/this_is_nasa_s_picture_of_day_showing_nothing_yet"
                 android:scaleType="centerCrop"
                 app:imageUrl="@{uiState.pictureOfDay.url}"
                 app:nasaPictureOfDayContentDescription="@{uiState.pictureOfDay.title}"
-                app:srcCompat="@drawable/placeholder_picture_of_day"
-                tools:ignore="ContentDescription" />
+                app:srcCompat="@drawable/placeholder_picture_of_day" />
 
             <TextView
                 android:layout_width="match_parent"

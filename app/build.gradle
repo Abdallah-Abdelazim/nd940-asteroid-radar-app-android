@@ -58,7 +58,7 @@ dependencies {
 
     // Glide
     implementation "com.github.bumptech.glide:glide:$versions.glide"
-    kapt "com.github.bumptech.glide:compiler:$versions.glide"
+    ksp "com.github.bumptech.glide:ksp:$versions.glide"
 
     // Lifecycle
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle"
@@ -74,7 +74,7 @@ dependencies {
 
     // Retrofit & Moshi
     implementation "com.squareup.moshi:moshi:$versions.moshi"
-    kapt "com.squareup.moshi:moshi-kotlin-codegen:$versions.moshi"
+    ksp "com.squareup.moshi:moshi-kotlin-codegen:$versions.moshi"
     implementation "com.squareup.retrofit2:retrofit:$versions.retrofit"
     implementation "com.squareup.retrofit2:converter-moshi:$versions.retrofit"
     implementation "com.squareup.retrofit2:converter-scalars:$versions.retrofit"

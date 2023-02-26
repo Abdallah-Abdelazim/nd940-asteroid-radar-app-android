@@ -47,9 +47,9 @@ android {
 dependencies {
 
     // Core
-    implementation "androidx.core:core-ktx:$versions.coreKtx"
+    implementation "androidx.core:core-ktx:$versions.core_ktx"
     implementation "androidx.appcompat:appcompat:$versions.appcompat"
-    implementation "androidx.activity:activity-ktx:$versions.activityKtx"
+    implementation "androidx.activity:activity-ktx:$versions.activity_ktx"
     implementation "androidx.fragment:fragment-ktx:$versions.fragment_ktx"
 
     // UI
@@ -96,7 +96,7 @@ dependencies {
     implementation "io.insert-koin:koin-android:$versions.koin"
 
     // Testing
-    testImplementation "junit:junit:$versions.testJunit"
-    androidTestImplementation "androidx.test.ext:junit:$versions.androidtestJunit"
+    testImplementation "junit:junit:$versions.test_junit"
+    androidTestImplementation "androidx.test.ext:junit:$versions.androidtest_junit"
     androidTestImplementation "androidx.test.espresso:espresso-core:$versions.espresso"
 }
